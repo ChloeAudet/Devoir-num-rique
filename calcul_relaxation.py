@@ -48,7 +48,7 @@ for i in range(11):
 for i in range(10, 21):
     cavite[42][i] = 300
 
-nb_iterations = 100
+nb_iterations = 1000
 n = 0
 
 # calcul méthode relaxation
@@ -71,8 +71,16 @@ while n <= nb_iterations:
     n += 1
     cavite = cavite_modifiee
 
-color_map = plt.imshow(cavite)
-cb = plt.colorbar(orientation='horizontal')
+# affichage du graphique 2d
+color_map = plt.imshow(cavite, aspect='auto')
+cb = plt.colorbar(orientation='vertical')
+plt.xlabel('X[mm]')
+plt.xticks((50, 100, 150, 200, 250, 300), ('10', '20', '30', '40', '50', '60'))
+plt.yticks((0, 10, 20, 30, 40), ('10', '8', '6', '4', '2'))
+plt.ylabel('Y[mm]')
+plt.text(1.175, 0.5, 'Potentiel[V]', horizontalalignment='left', verticalalignment='center',
+         rotation=90, clip_on=False, transform=plt.gca().transAxes)
+plt.title('Potentiel dans la cavité pour 1000 itérations')
 plt.show()
 
 
