@@ -63,7 +63,7 @@ while n <= nb_iterations:
                 continue
             elif i < 10 and j > 6 and j < 16:
                 continue
-            elif i < 22 and j > 40:
+            elif i < 21 and j > 40:
                 continue
             elif j > 34 and j < 45 and i < 15:
                 continue
