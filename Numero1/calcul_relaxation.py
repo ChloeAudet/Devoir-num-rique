@@ -48,7 +48,7 @@ for i in range(11):
 for i in range(10, 21):
     cavite[42][i] = 300
 
-nb_iterations = 100
+nb_iterations = 1000
 n = 0
 
 # calcul méthode relaxation
@@ -56,7 +56,7 @@ while n <= nb_iterations:
     cavite_modifiee = cavite.copy()
     for j in range(1, Nv - 1):
         for i in range(1, Nh - 1):
-            if j == 25 and i > 15:
+            if j > 22 and j < 28 and i > 15:
                 cavite_modifiee[j][i] = 0
             elif j < 9 and i < 21:
                 continue
