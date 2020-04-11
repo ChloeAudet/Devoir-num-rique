@@ -1,8 +1,12 @@
+# -*- coding: utf-8 -*-
+
+# Noms : Corinne Dumais, Élodie Lescure, Chloé Lavoie-Audet, Aricia Proulx
+
 import numpy as np
 import matplotlib.pyplot as plt
 
-Nh = 301  # nombre de noeuds dans la direction des x
-Nv = 51  # nombre de noeuds dans la direction des y
+Nh = 301  # nombre de noeuds horizontaux
+Nv = 51  # nombre de noeuds verticaux
 
 # initialisation de la matrice
 cavite = np.array([[0 for x in range(Nh)] for y in range(Nv)])
@@ -50,11 +54,11 @@ for i in range(10, 21):
 nb_iterations = 500
 n = 0
 
-# calcul Gauss-Seidel
+# calcul méthode Gauss-Seidel
 while n <= nb_iterations:
     for j in range(1, Nv - 1):
         for i in range(1, Nh - 1):
-            if j > 22 and j < 28 and i > 15:
+            if 22 < j < 28 and i > 15:
                 cavite[j][i] = 0
             elif j < 9 and i < 21:
                 continue

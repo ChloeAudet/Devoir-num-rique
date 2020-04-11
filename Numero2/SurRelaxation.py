@@ -1,8 +1,12 @@
+# -*- coding: utf-8 -*-
+
+# Noms : Corinne Dumais, Élodie Lescure, Chloé Lavoie-Audet, Aricia Proulx
+
 import numpy as np
 import matplotlib.pyplot as plt
 
-Nh = 301  # nombre de noeuds dans la direction des x
-Nv = 51  # nombre de noeuds dans la direction des y
+Nh = 301  # nombre de noeuds horizontaux
+Nv = 51  # nombre de noeuds verticaux
 
 # initialisation de la matrice
 cavite = np.array([[0 for x in range(Nh)] for y in range(Nv)])
@@ -50,13 +54,13 @@ for i in range(10, 21):
 nb_iterations = 25
 n = 0
 w = 0.75  # Environ maximum avant que l'image soit affectée
-            # et éventuellement que la convergence soit brisée
+# et éventuellement que la convergence soit brisée
 
 # calcul Gauss-Seidel
 while n <= nb_iterations:
     for j in range(1, Nv - 1):
         for i in range(1, Nh - 1):
-            if j > 22 and j < 28 and i > 15:
+            if 22 < j < 28 and i > 15:
                 cavite[j][i] = 0
             elif j < 9 and i < 21:
                 continue
@@ -67,8 +71,8 @@ while n <= nb_iterations:
             elif j > 34 and i < 11:
                 continue
             else:
-                cavite[j][i] = 0.25 * (1 + w) * (cavite[j+1][i] + cavite[j-1][i]
-                           + cavite[j][i+1] + cavite[j][i-1]) - w * cavite[j][i]
+                cavite[j][i] = 0.25 * (1 + w) * (cavite[j + 1][i] + cavite[j - 1][i]
+                                                 + cavite[j][i + 1] + cavite[j][i - 1]) - w * cavite[j][i]
     n += 1
 
 # affichage du graphique 2d
