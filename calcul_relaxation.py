@@ -56,16 +56,15 @@ while n <= nb_iterations:
     cavite_modifiee = cavite.copy()
     for j in range(1, Nv - 1):
         for i in range(1, Nh - 1):
-            # électrode maintenue à un potentiel nul
             if j == 25 and i > 15:
                 cavite_modifiee[j][i] = 0
-            elif j < 10 and i < 18:
+            elif j < 9 and i < 21:
                 continue
-            elif i < 10 and j > 6 and j < 16:
+            elif i < 11 and j < 16:
                 continue
-            elif i < 21 and j > 40:
+            elif i < 21 and j > 41:
                 continue
-            elif j > 34 and j < 45 and i < 15:
+            elif j > 34 and i < 11:
                 continue
             else:
                 cavite_modifiee[j][i] = 0.25*(cavite[j+1][i] + cavite[j-1][i] + cavite[j][i+1] + cavite[j][i-1])
