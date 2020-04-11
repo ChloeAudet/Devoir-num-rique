@@ -47,10 +47,10 @@ for i in range(11):
 for i in range(10, 21):
     cavite[42][i] = 300
 
-nb_iterations = 100
+nb_iterations = 500
 n = 0
 
-# calcul méthode relaxation
+# calcul Gauss-Seidel
 while n <= nb_iterations:
     for j in range(1, Nv - 1):
         for i in range(1, Nh - 1):
@@ -77,5 +77,5 @@ plt.yticks((0, 10, 20, 30, 40), ('10', '8', '6', '4', '2'))
 plt.ylabel('Y[mm]')
 plt.text(1.175, 0.5, 'Potentiel[V]', horizontalalignment='left', verticalalignment='center',
          rotation=90, clip_on=False, transform=plt.gca().transAxes)
-plt.title('Potentiel dans la cavité pour 1000 itérations')
+plt.title('Potentiel dans la cavité pour ' + str(nb_iterations) + ' itérations avec Gauss-Seidel')
 plt.show()
