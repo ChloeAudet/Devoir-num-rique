@@ -48,7 +48,7 @@ for i in range(11):
 for i in range(10, 21):
     cavite[42][i] = 300
 
-nb_iterations = 500
+nb_iterations = 100
 n = 0
 
 # calcul méthode relaxation
@@ -59,13 +59,13 @@ while n <= nb_iterations:
             # électrode maintenue à un potentiel nul
             if j == 25 and i > 15:
                 cavite_modifiee[j][i] = 0
-            elif i < 10 and j < 18:
+            elif j < 10 and i < 18:
                 continue
-            elif j < 13 and i > 6 and i < 15:
+            elif i < 10 and j > 6 and j < 16:
                 continue
             elif i < 22 and j > 40:
                 continue
-            elif j > 33 and j < 45 and i < 15:
+            elif j > 34 and j < 45 and i < 15:
                 continue
             else:
                 cavite_modifiee[j][i] = 0.25*(cavite[j+1][i] + cavite[j-1][i] + cavite[j][i+1] + cavite[j][i-1])
