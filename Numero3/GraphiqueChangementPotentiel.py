@@ -52,7 +52,7 @@ for i in range(10, 21):
     cavite[42][i] = 300
 
 # assignation d'une valeur au nombre d'itérations
-nb_iterations = 410
+nb_iterations = 100
 compteur_iterations = 0
 
 # liste des valeurs en y
@@ -94,5 +94,7 @@ while compteur_iterations <= nb_iterations:
 # affichage du graphique pour la méthode de la relaxation
 plt.plot(list_nb_iterations, list_diff)
 plt.yscale('log')
+plt.xlabel("Nombre d'itérations")
+plt.ylabel("Variation moyenne[V]")
 plt.show()
 
