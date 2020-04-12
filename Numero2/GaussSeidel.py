@@ -51,6 +51,7 @@ for i in range(11):
 for i in range(10, 21):
     cavite[42][i] = 300
 
+# assignation d'une valeur au nombre d'itérations
 nb_iterations = 500
 n = 0
 

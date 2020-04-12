@@ -51,12 +51,13 @@ for i in range(11):
 for i in range(10, 21):
     cavite[42][i] = 300
 
+# assignation d'une valeur au nombre d'itérations
 nb_iterations = 25
 n = 0
 w = 0.75  # Environ maximum avant que l'image soit affectée
 # et éventuellement que la convergence soit brisée
 
-# calcul Gauss-Seidel
+# calcul Gauss-Seidel avec sur-relaxation
 while n <= nb_iterations:
     for j in range(1, Nv - 1):
         for i in range(1, Nh - 1):
