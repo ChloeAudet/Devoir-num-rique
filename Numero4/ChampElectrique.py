@@ -96,8 +96,8 @@ for j in range(1, Nv - 1):
             champ_mag[j][i] = magnitude
 
 # affichage du graphique 2d
-# color_map = plt.imshow(champ_mag, aspect='auto', cmap='tab20c') # colormap avec échelle discrète
-color_map = plt.imshow(champ_mag, aspect='auto', cmap='gist_stern')  # colormap avec échelle continue
+color_map = plt.imshow(champ_mag, aspect='auto', cmap='tab20c') # colormap avec échelle discrète
+# color_map = plt.imshow(champ_mag, aspect='auto', cmap='gist_stern')  # colormap avec échelle continue
 cb = plt.colorbar(orientation='vertical')
 plt.xlabel('X[mm]')
 plt.xticks((50, 100, 150, 200, 250, 300), ('10', '20', '30', '40', '50', '60'))
