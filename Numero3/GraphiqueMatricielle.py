@@ -31,16 +31,22 @@ cavite[15, :11] = 300
 cavite[35, :11] = 300
 
 # assignation d'une valeur au nombre d'itérations
-nb_iterations = 100
+nb_iterations = 200
 n = 0
 
 colonne_zeros = np.zeros((51, 1))
 ligne_zeros = np.zeros((1, 301))
 
+ancienne_cavite = cavite.copy()
+list_iterations = []
+list_diff = []
+
 # calcul avec méthode matricielle
 while n <= nb_iterations:
-    cavite = (np.vstack((cavite[1:, 0:], ligne_zeros)) + np.vstack((ligne_zeros, cavite[:50, 0:]))
-              + np.hstack((cavite[0:, 1:], colonne_zeros)) + np.hstack((colonne_zeros, cavite[0:, :300])))/4
+    cavite = 0.25*(np.vstack((ancienne_cavite[1:, 0:], ligne_zeros))
+                            + np.vstack((ligne_zeros, ancienne_cavite[:50, 0:]))
+                            + np.hstack((ancienne_cavite[0:, 1:], colonne_zeros))
+                            + np.hstack((colonne_zeros, ancienne_cavite[0:, :300])))
     cavite[:, 300] = 300
     cavite[0, 20:] = 300
     cavite[50, 20:] = 300
@@ -59,16 +65,19 @@ while n <= nb_iterations:
     cavite[42, 10:21] = 300
     cavite[15, :11] = 300
     cavite[35, :11] = 300
-    n += 1
 
-# affichage du graphique 2d
-color_map = plt.imshow(cavite, aspect='auto')
-cb = plt.colorbar(orientation='vertical')
-plt.xlabel('X[mm]')
-# plt.xticks((50, 100, 150, 200, 250, 300), ('10', '20', '30', '40', '50', '60'))
-# plt.yticks((0, 10, 20, 30, 40), ('10', '8', '6', '4', '2'))
-plt.ylabel('Y[mm]')
-plt.text(1.175, 0.5, 'Potentiel[V]', horizontalalignment='left', verticalalignment='center',
-         rotation=90, clip_on=False, transform=plt.gca().transAxes)
-plt.title('Potentiel dans la cavité pour ' + str(nb_iterations) + ' itérations avec une approche matricielle')
+    n += 1
+    list_iterations.append(n)
+    list_diff.append(np.mean((cavite - ancienne_cavite) ** 2) / 14191)
+    ancienne_cavite = cavite
+
+
+# affichage du graphique pour la méthode de
+plt.plot(list_iterations, list_diff)
+plt.xlabel("Nombre d'itérations")
+plt.ylabel("Variation moyenne[V]")
+plt.yscale('log')
+plt.xlim(0, nb_iterations)
+plt.ylim(0.000001, 1)
+plt.title("Variation du potentiel en fonction du nombre d'itérations pour la méthode matricielle")
 plt.show()
