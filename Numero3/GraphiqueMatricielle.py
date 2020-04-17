@@ -4,6 +4,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+import time
 
 Nh = 301  # nombre de noeuds horizontaux
 Nv = 51  # nombre de noeuds verticaux
@@ -41,6 +42,8 @@ ancienne_cavite = cavite.copy()
 list_iterations = []
 list_diff = []
 
+temps_debut = time.time()
+
 # calcul avec méthode matricielle
 while n <= nb_iterations:
     cavite = 0.25*(np.vstack((ancienne_cavite[1:, 0:], ligne_zeros))
@@ -70,6 +73,12 @@ while n <= nb_iterations:
     list_iterations.append(n)
     list_diff.append(np.mean((cavite - ancienne_cavite) ** 2) / 14191)
     ancienne_cavite = cavite
+
+    if n > 1:
+        if ((list_diff[n - 1] - list_diff[n - 2]) / list_diff[n - 2]) * 100 < 1:
+            temps_fin = time.time()
+
+print(temps_fin - temps_debut)
 
 
 # affichage du graphique pour la méthode de

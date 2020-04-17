@@ -4,6 +4,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+import time
 
 Nh = 301  # nombre de noeuds horizontaux
 Nv = 51  # nombre de noeuds verticaux
@@ -57,6 +58,8 @@ n = 0
 list_iterations = []
 list_diff = []
 
+temps_debut = time.time()
+
 # calcul méthode de la relaxation
 while n <= nb_iterations:
     cavite_modifiee = cavite.copy()
@@ -78,6 +81,12 @@ while n <= nb_iterations:
     list_iterations.append(n)
     list_diff.append(np.mean((cavite_modifiee - cavite)**2)/14191)
     cavite = cavite_modifiee
+
+    if n > 1:
+        if ((list_diff[n-1] - list_diff[n-2])/list_diff[n-2])*100 < 1:
+            temps_fin = time.time()
+
+print(temps_fin-temps_debut)
 
 # affichage du graphique pour la méthode de la relaxation
 plt.plot(list_iterations, list_diff)
