@@ -52,7 +52,7 @@ for n in range(10, 21):
     cavite[42][n] = 300
 
 # assignation d'une valeur au nombre d'itérations
-nb_iterations = 40
+nb_iterations = 100
 n = 0
 w = 0.7
 
