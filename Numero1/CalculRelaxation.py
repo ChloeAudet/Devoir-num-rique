@@ -84,7 +84,7 @@ plt.yticks((0, 10, 20, 30, 40), ('10', '8', '6', '4', '2'))
 plt.ylabel('Y[mm]')
 plt.text(1.175, 0.5, 'Potentiel[V]', horizontalalignment='left', verticalalignment='center',
          rotation=90, clip_on=False, transform=plt.gca().transAxes)
-plt.title('Potentiel dans la cavité pour ' + str(nb_iterations) + ' itérations')
+plt.title('Potentiel dans la cavité pour ' + str(nb_iterations) + ' itérations pour la méthode de la relaxation')
 plt.show()
 
 

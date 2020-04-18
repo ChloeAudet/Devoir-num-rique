@@ -25,7 +25,7 @@ cavite[15, :11] = 300
 cavite[35, :11] = 300
 
 # assignation d'une valeur au nombre d'itérations
-nb_iterations = 150
+nb_iterations = 200
 n = 0
 
 colonne_zeros = np.zeros((51, 1))
